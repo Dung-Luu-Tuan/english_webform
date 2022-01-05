@@ -12,12 +12,12 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Web Tour</a>
+      <a class="navbar-brand" href="#">English_Web</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="${pageContext.request.contextPath}/">Đăng ký</a></li>
       <li><a href="${pageContext.request.contextPath}/timkiem">Tra cứu thông tin</a></li>
-      <li><a href="${pageContext.request.contextPath}/touristGroupList">Giấy chứng nhận</a></li>
+      <li><a href="${pageContext.request.contextPath}/chungchi">Giấy chứng nhận</a></li>
       <li><a href="${pageContext.request.contextPath}/placeList">Danh sách thí sinh theo phòng</a></li>
     </ul>
   </div>

@@ -26,16 +26,16 @@ public class ThisinhController {
     public String saveNewThisinh(@ModelAttribute("thisinhAdd") thisinh thisinh) {
         thisinhDAO.insert(thisinh);
         thisinh_phongthi thisinh_phongthi = new thisinh_phongthi();
-        thisinh thisinh1 = thisinhDAO.listthisinh().get(thisinhDAO.listthisinh().size()-1);
+        thisinh thisinh1 = thisinhDAO.listthisinh().get(thisinhDAO.listthisinh().size() - 1);
         List<phongthi> phongthiList = phongthiDAO.listphongthi();
         List<thisinh_phongthi> thisinh_phongthiList = new ArrayList<>();
 
         thisinh_phongthi.setId_thisinh(thisinh1.getId());
-        for(phongthi phongthi : phongthiList) {
-            if(phongthi.getName().contains(thisinh.getTrinhdo())){
+        for (phongthi phongthi : phongthiList) {
+            if (phongthi.getName().contains(thisinh.getTrinhdo())) {
                 thisinh_phongthi.setId_phongthi(phongthi.getId());
                 thisinh_phongthiList = phongthiDAO.getDetail(phongthi).getThisinh_phongthiList();
-                int size = thisinh_phongthiList.size()+1;
+                int size = thisinh_phongthiList.size() + 1;
                 String size2 = size < 10 ? "0" + size : String.valueOf(size);
                 thisinh_phongthi.setSbd(thisinh.getTrinhdo() + size2);
                 break;
@@ -54,11 +54,11 @@ public class ThisinhController {
 
         List<thisinh_phongthi> data_search = new ArrayList<>();
         List<thisinh> thisinhList = new ArrayList<>();
-        if(name == null || sdt == null){
+        if (name == null || sdt == null) {
             data_search = null;
         } else {
             thisinhList = thisinhphongthiDAO.get(name, sdt);
-            if(thisinhList.size() == 0){
+            if (thisinhList.size() == 0) {
                 model.addAttribute("notice", "Không tìm thấy thí sinh này");
             } else {
                 for (thisinh t : thisinhList) {
@@ -72,13 +72,17 @@ public class ThisinhController {
 
     @RequestMapping("/chungchi")
     public String editTour(Model model, @Param("sbd") String sbd) {
-        List<thisinh_phongthi> thisinhPhongthi = thisinhphongthiDAO.getBySbd(sbd);
-        if(thisinhPhongthi.size() > 0) {
-            model.addAttribute("datas", thisinhPhongthi);
+        List<thisinh_phongthi> thisinhPhongthi;
+        if (sbd == null) {
         } else {
-            model.addAttribute("notice", "Không tìm thấy thí sinh này");
+            thisinhPhongthi = thisinhphongthiDAO.getBySbd(sbd);
+            if (thisinhPhongthi.size() == 0) {
+                model.addAttribute("notice2", "Không tìm thấy thí sinh này");
+            } else {
+                model.addAttribute("notice2", " ");
+                model.addAttribute("datas", thisinhPhongthi);
+            }
         }
         return "chungnhan";
     }
-
 }

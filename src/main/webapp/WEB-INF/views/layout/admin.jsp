@@ -23,6 +23,26 @@
             margin: 20px;
         }
 
+        h3{
+            margin: 10px 40px 0px 40px;
+        }
+
+        #diemthi {
+            margin: 20px 40px;
+            color: #3E9EEE;
+            font-size: 30px;
+        }
+
+        #trinhdo{
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        #result{
+            font-weight: bold;
+        }
+
         input[type=date] {
              width: 150%;
              padding: 10px 20px;
