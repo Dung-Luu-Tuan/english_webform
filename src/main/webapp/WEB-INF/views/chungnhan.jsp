@@ -5,15 +5,11 @@
 <body>
         <div align="center">
             <table border="0" cellpadding="3">
-            <h2>Tìm kiếm </h2>
+            <h2>Tìm kiếm giấy chứng nhận</h2>
                  <form th:action="@{/chungchi}">
                     <tr>
-                         <td>Số báo danh: </td>
-                         <td><input type="text" name="sbd" id="sbd" th:value="${sbd}" required /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td colspan="1"><input type="submit" value="Search" /></td>
+                         <td><input type="text" name="sbd" id="sbd" th:value="${sbd}" placeholder="Số báo danh..." required /></td>
+                         <td colspan="1"><input id="search_chungchi" type="submit" value="Tìm kiếm" /></td>
                     </tr>
                  </form>
                  <h2 style="color: red">${notice2}</h2>

@@ -48,11 +48,11 @@ public class phongthiDAO {
         }
     }
 
-    public static phongthi getDetail(phongthi phongthi){
+    public static phongthi getDetail(int id){
             factory = HibernateUtil.getSessionFactory();
             Session session = factory.openSession();
             Transaction tx = session.beginTransaction();
-            phongthi phongthi1 = session.get(phongthi.class, phongthi.getId());
+            phongthi phongthi1 = session.get(phongthi.class, id);
             tx.commit();
             session.close();
             return phongthi1;

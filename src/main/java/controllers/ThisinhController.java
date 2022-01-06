@@ -34,7 +34,7 @@ public class ThisinhController {
         for (phongthi phongthi : phongthiList) {
             if (phongthi.getName().contains(thisinh.getTrinhdo())) {
                 thisinh_phongthi.setId_phongthi(phongthi.getId());
-                thisinh_phongthiList = phongthiDAO.getDetail(phongthi).getThisinh_phongthiList();
+                thisinh_phongthiList = phongthiDAO.getDetail(phongthi.getId()).getThisinh_phongthiList();
                 int size = thisinh_phongthiList.size() + 1;
                 String size2 = size < 10 ? "0" + size : String.valueOf(size);
                 thisinh_phongthi.setSbd(thisinh.getTrinhdo() + size2);
@@ -84,5 +84,40 @@ public class ThisinhController {
             }
         }
         return "chungnhan";
+    }
+
+    @RequestMapping("/danhsachthisinh")
+    public ModelAndView loadKhoathi() {
+        ModelAndView mav = new ModelAndView("danhsachthisinh");
+        List<khoathi> khoathiList = khoathiDAO.listkhoathi();
+        mav.addObject("khoathiList", khoathiList);
+        return mav;
+    }
+
+    @RequestMapping("/timkiem_phongthi")
+    public String listphongthi(Model model, @Param("khoathi") int khoathi) {
+        List<phongthi> phongthiList = khoathiDAO.getDetail(khoathi).getPhongthiList();
+        model.addAttribute("phongthiList", phongthiList);
+        return "danhsachthisinh";
+    }
+
+    @RequestMapping("/timkiem_thisinh")
+    public String listThiSinh_phongthi(Model model, @Param("phongthi") int phongthi) {
+        List<thisinh_phongthi> thisinh_phongthiList = phongthiDAO.getDetail(phongthi).getThisinh_phongthiList();
+        model.addAttribute("thisinh_phongthiList", thisinh_phongthiList);
+        return "/danhsachthisinh";
+    }
+
+    @RequestMapping(value = "thongtincanhan/{id}", method = RequestMethod.GET)
+    public ModelAndView thongtincanhan(@PathVariable("id") int id){
+        try {
+            ModelAndView modelAndView = new ModelAndView("thongtincanhan");
+            thisinh thisinh = thisinhDAO.getThisinhById(id);
+            modelAndView.addObject("thisinh", thisinh);
+            return modelAndView;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
