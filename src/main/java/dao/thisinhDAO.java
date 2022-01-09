@@ -79,5 +79,16 @@ public class thisinhDAO {
             tx.commit();
             session.close();
             return thisinh;
-        }
+    }
+
+    public static List<thisinh> getByTrinhDo(String trinhdo){
+        factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        List<thisinh> thisinhList = session.createQuery("FROM thisinh WHERE trinhdo LIKE :trinhdo")
+                .setParameter("trinhdo", "%" + trinhdo + "%").list();
+        tx.commit();
+        session.close();
+        return thisinhList;
+    }
 }

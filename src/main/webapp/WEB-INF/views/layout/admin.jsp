@@ -29,6 +29,12 @@
              margin: 20px;
         }
 
+        #select3 {
+              width: 70%;
+              padding: 12px 20px;
+              margin: 20px 50px;
+        }
+
         #search_chungchi {
             width: 50%;
             background-color: #4CAF50;

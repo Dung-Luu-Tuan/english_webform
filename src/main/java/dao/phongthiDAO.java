@@ -67,4 +67,15 @@ public class phongthiDAO {
             tx.commit();
             session.close();
     }
+
+    public static List<phongthi> getByTrinhDo(String trinhdo){
+        factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        List<phongthi> phongthiList = session.createQuery("FROM phongthi WHERE name LIKE :trinhdo")
+                .setParameter("trinhdo", "%" + trinhdo + "%").list();
+        tx.commit();
+        session.close();
+        return phongthiList;
+    }
 }

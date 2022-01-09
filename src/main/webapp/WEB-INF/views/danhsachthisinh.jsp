@@ -27,11 +27,12 @@
                         <tr>
                              <td>Phòng thi: </td>
                              <td>
-                             <select name="phongthi" id="select2">
-                                <c:forEach var="data" items="${phongthiList}">
-                                     <option value="${data.id}" th:value="${phongthi}" required="required" >${data.name}</option>
-                                </c:forEach>
-                             </select>
+                                 <select name="phongthi" id="select2">
+                                    <c:forEach var="data" items="${phongthiList}">
+                                         <option value="${data.id}" th:value="${phongthi}" required="required" >${data.name}</option>
+                                    </c:forEach>
+                                 </select>
+                             </td>
                         </tr>
                         <tr>
                             <td colspan="1"><input type="submit" value="Search" /></td>

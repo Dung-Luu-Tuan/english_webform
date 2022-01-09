@@ -109,15 +109,26 @@ public class ThisinhController {
     }
 
     @RequestMapping(value = "thongtincanhan/{id}", method = RequestMethod.GET)
-    public ModelAndView thongtincanhan(@PathVariable("id") int id){
+    public ModelAndView thongtincanhan(@PathVariable("id") int id) {
         try {
             ModelAndView modelAndView = new ModelAndView("thongtincanhan");
             thisinh thisinh = thisinhDAO.getThisinhById(id);
             modelAndView.addObject("thisinh", thisinh);
             return modelAndView;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @RequestMapping("/thongke")
+    public String thongke(Model model, @Param("trinhdo") String trinhdo) {
+
+        List<phongthi> phongthiList = phongthiDAO.getByTrinhDo(trinhdo);
+        List<thisinh> thisinhList = thisinhDAO.getByTrinhDo(trinhdo);
+        model.addAttribute("trinhdo", trinhdo);
+        model.addAttribute("phongthiList", phongthiList);
+        model.addAttribute("thisinhList", thisinhList);
+        return "/thongke";
     }
 }
