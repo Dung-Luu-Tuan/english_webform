@@ -19,6 +19,7 @@
       <li><a href="${pageContext.request.contextPath}/timkiem">Tra cứu thông tin</a></li>
       <li><a href="${pageContext.request.contextPath}/chungchi">Giấy chứng nhận</a></li>
       <li><a href="${pageContext.request.contextPath}/danhsachthisinh">Danh sách thí sinh theo phòng</a></li>
+      <li><a href="${pageContext.request.contextPath}/thongke">Thống kê</a></li>
     </ul>
   </div>
 </nav>
